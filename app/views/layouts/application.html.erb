@@ -9,7 +9,9 @@
   </head>
 
   <body>
-    <%= render 'layouts/navigation' %>
+    <% if user_signed_in? %>
+      <%= render 'layouts/navigation' %>
+    <% end %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
