@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require bootstrap-sprockets
+//= require jquery.slimscroll.min
+//= require datatable
+//= require cocoon
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .

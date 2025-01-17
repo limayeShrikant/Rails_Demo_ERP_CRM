@@ -1,0 +1,100 @@
+<%= form_with(model: @lead, local: true) do |f| %>
+
+  <div class="box box-info">
+    <div class="box-header with-border">
+      <h3 class="box-title">Lead details</h3><br>
+      <small><font color="red">*</font> marked fields are mandatory.</small>
+    </div>
+    <div class="box-body">
+      <div class="row">
+        <div class="col-xs-12">
+          <strong>Basic information</strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-4">
+          <span>Lead Name</span><span><font color="red">*</font></span>
+          <%= f.text_field :first_name, id: :lead_first_name, class: "form-control" %>
+        </div>
+        <div class="col-xs-4">
+          <span>Last name</span><span><font color="red">*</font></span>
+          <%= f.text_field :last_name, id: :lead_last_name, class: "form-control" %>
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-xs-12">
+          <strong>Work related information</strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <span>Company name</span>
+          <%= f.text_field :company, id: :lead_company, class: "form-control" %>
+        </div>
+        <div class="col-xs-3">
+          <span>City</span><span><font color="red">*</font></span>
+        <%= f.text_field :city, class: "form-control"%>
+        </div>
+      </div><br>
+      <div class="row">
+        <div class="col-xs-12">
+          <strong>Contact information</strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          <span>Email</span><span><span><font color="red">*</font></span>
+          <%= f.text_field :email, id: :lead_email, class: "form-control" %>
+        </div>
+        <div class="col-xs-3">
+          <span>Mobile</span><span>
+          <%= f.text_field :phone, id: :lead_phone, class: "form-control" %>
+        </div>
+      </div><br>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+          <strong>Address</strong>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-1">
+          Address Type<span><font color="red">*</font></span>
+        </div>
+        <div class="col-xs-1">
+          Address Purpose<span><font color="red">*</font></span>
+        </div>
+        <div class="col-xs-2">
+          Street details<span><font color="red">*</font></span>
+        </div>
+        <div class="col-xs-1">
+          City<span><font color="red">*</font></span>
+        </div>
+        <div class="col-xs-2">
+          State<span><font color="red">*</font></span>
+        </div>
+        <div class="col-xs-1">
+          Country<span><font color="red">*</font></span>
+        </div>
+        <div class="col-xs-1">
+          Pincode<span><font color="red">*</font></span>
+        </div>
+      </div>
+      <div class="lead_addresses">
+        <%= f.fields_for :addresses do |address|%>
+          <%= render 'address_fields', f: addresses %>
+        <% end %>
+        <div id="links">
+          <%= link_to_add_association 'Add Addresses', f, :addresses, class: "btn btn-warning" %>
+        </div>
+      </div>
+    <div class="row">
+      <br/>
+      <div class="col-xs-12">
+        <%= link_to "Cancel", leads_path, {class: "btn btn-default"} %>
+        <%= f.submit "Save Lead", {class: "btn btn-success pull-right"} %>
+      </div>
+    </div>
+  </div><br>
+  <!-- /.box-body -->
+<% end %>

@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-md-6">
+        <h3>Leads Display</h3>
+    </div>
+    <div class="col-md-6">
+        <h3><%= link_to 'Create New Lead', new_lead_path, class: "btn btn-info pull-right" %></h3>
+    </div>
+</div>
+
+
+<div class="box box-default">
+    <!-- /.box-header -->
+        <table class='table'>
+            <thead>
+                <tr>
+                    <div class="col-md-1">
+                        <th>First name</th>
+                    </div>
+                    <div class="col-md-2">
+                        <th>Last name</th>
+                    </div>
+                    <div class="col-md-3">
+                        <th>City</th>
+                    </div>
+                    <div class="col-md-2">
+                        <th>Phone</th>
+                    </div>
+                    <div class="col-md-2">
+                        <th>Actions</th>
+                    </div>
+                </tr>
+            </thead>
+            <tbody>
+                    <% @leads.each do |lead| %>
+                    <tr>
+                        <td class="col-md-1"><%= lead.first_name %></td>
+                        <td class="col-md-2"><%= lead.last_name %></td>
+                        <td class="col-md-3"><%= lead.city %></td>
+                        <td class="col-md-2"><%= lead.phone %></td>
+
+                        <td><%= link_to('Show', lead, class: "btn btn-success") %> |
+                        <%= link_to('Delete', lead, class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure, you want to delete this lead?'}) %></td>
+                    </tr>
+                    <% end %>
+            </tbody>
+        </table>
+    <!-- /.box-body -->
+</div>

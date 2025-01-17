@@ -1,0 +1,16 @@
+<div class="container">
+<h1>Lead </h1>
+
+<div>
+    <ul>
+       <li><h3><%= @lead.first_name %> <%= @lead.last_name %></h3></li>
+    </ul>
+
+    <% @addresses.each do |address| %>
+        <ul>
+            <li><%= address.address_type %></li>
+            <li><%= address.address_detail %></li>
+        </ul>
+    <% end %>
+</div>
+</div>

@@ -1,0 +1,25 @@
+<div class="address_fields">
+    <div class="row">
+          <div class="col-xs-1">
+            <%= f.select :address_type,  options_for_select(%w[Office Site Godown], f.object.address_type), {}, { class: "form-control select-2"} %>
+        </div>
+        <div class="col-xs-2">
+            <%= f.text_area :address_detail, { class: "form-control"} %>
+        </div>
+        <div class="col-xs-1">
+            <%= f.select :city, options_for_select(($GLOBAL_CITY_LIST + Address.all.pluck(:city) + Lead.all.pluck(:city)).uniq.sort, f.object.city), {}, { class: "form-control select-2-custom"} %>
+        </div>
+        <div class="col-xs-2">
+            <%= f.select :state, options_for_select(($GLOBAL_STATE_LIST + Address.all.pluck(:state)).uniq.sort, f.object.state), {}, { class: "form-control select-2-custom"} %>
+        </div>
+        <div class="col-xs-1">
+            <%= f.select :country, options_for_select(($GLOBAL_COUNTRY_LIST + Address.all.pluck(:country)).uniq, f.object.country), {}, { class: "form-control select-2-custom"} %>
+        </div>
+        <div class="col-xs-1">
+            <%= f.text_field :pincode, { class: "form-control"} %>
+        </div>
+        <div class="col-md-1">
+            <%= link_to_remove_association "Remove", f, { class: "btn btn-danger", wrapper_class: 'address_fields' } %>
+      </div>
+    </div>
+</div>

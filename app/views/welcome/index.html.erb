@@ -1,5 +1,7 @@
-<h1> Welcome </h1>
+<div class='container'>
+    <h1> Welcome </h1>
+</div>
 
-<% if !user_signed_in? %>
-    <%= link_to "Sign Up with your Email", new_user_session_path, class: "btn btn-primary" %>
-<% end %>
+<div class="container">
+    <%= button_to "Sign Up with your Email", new_user_session_path, class: "btn btn-primary" %>
+</div>

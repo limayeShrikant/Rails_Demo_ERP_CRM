@@ -5,15 +5,22 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
-    <% if user_signed_in? %>
-      <%= render 'layouts/navigation' %>
-    <% end %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <% if ['registration', 'sessions','password', 'welcome'].include?(controller.controller_name)  %>
     <%= yield %>
-  </body>
+  <% else %>
+    <body class="fixed skin-blue sidebar-mini sidebar-collapse">
+      <%= render 'layouts/navigation/layout'%>
+      <div class="wrapper">
+        <div class="content-wrapper">
+          <section class="content-header">
+            <%= yield %>
+          </section>
+        </div>
+        <%= render 'layouts/navigation/footer'%>
+      </div>
+    </body>
+  <% end %>
 </html>

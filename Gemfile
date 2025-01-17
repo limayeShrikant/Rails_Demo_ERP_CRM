@@ -32,6 +32,15 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'bootstrap_form'
+gem 'cocoon'
+gem 'kaminari'
+
+source 'https://rails-assets.org' do
+  # DataTable for Index Page features
+  gem 'rails-assets-datatable'
+  # Advanced Tables
+  # gem 'rails-assets-tabulator'
+end
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -1,0 +1,8 @@
+<%= render "layouts/navigation/header" %>
+<%
+=begin%>
+ <%= render "layouts/navigation/#{current_user.role.delete(' ').underscore}_sidebar" %> 
+<%
+=end%>
+
+<%= render "layouts/navigation/admin_sidebar" %>
