@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20250116100604) do
+ActiveRecord::Schema.define(version: 20250117071043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,34 @@ ActiveRecord::Schema.define(version: 20250116100604) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sales_proposals", force: :cascade do |t|
+    t.bigint "lead_id"
+    t.string "lead_name", null: false
+    t.string "status"
+    t.string "state"
+    t.string "architect_name"
+    t.string "architect_contact"
+    t.string "source"
+    t.boolean "won"
+    t.boolean "lost"
+    t.string "quotation_reference"
+    t.date "quotation_date"
+    t.decimal "won_qty", precision: 15, scale: 4
+    t.string "won_unit"
+    t.text "lost_against_information"
+    t.decimal "alternate_product_rate", precision: 19, scale: 4
+    t.date "won_date"
+    t.string "product"
+    t.datetime "last_opened_on"
+    t.boolean "locked", default: false
+    t.datetime "locked_on"
+    t.bigint "project_execution_id"
+    t.bigint "created_by_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["created_by_id"], name: "index_sales_proposals_on_created_by_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
@@ -57,4 +85,5 @@ ActiveRecord::Schema.define(version: 20250116100604) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "sales_proposals", "users", column: "created_by_id"
 end

@@ -1,0 +1,2 @@
+module SalesProposalsHelper
+end

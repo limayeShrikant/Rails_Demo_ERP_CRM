@@ -1,0 +1,40 @@
+<%= form_with(model: @sales_proposal, local: true) do |f| %>
+
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <p><strong>Customer Information</strong></p>
+            <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="row">
+            <div class="col-md-2">
+                <label>Lead</label>
+            </div>
+            <div class="col-md-2">
+                <label>Product</label>
+            </div>
+            <div class="col-md-3">
+                <label>Architect Name</label>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col-md-2">
+                <%= f.select :lead_id, options_for_select(@leads, f.object.lead_id), {prompt: "- Select Lead -"}, {class: "form-control"}%>
+            </div>
+            <div class="col-md-2">
+                <%= f.select :product, options_for_select(@products, f.object.product), {prompt: "- Select Product -"}, {class: "form-control"}%>
+            </div>
+            <div class="col-md-3">
+                <%= f.text_field :architect_name, class: "form-control" %>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer">
+        <%= f.submit 'Save Proposal', class: "btn btn-success" %>
+        <%= link_to 'Cancel', sales_proposals_path, class: "btn btn-default pull-right" %>
+        </div>
+<% end %>
